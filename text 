@@ -1,0 +1,37 @@
+PROCEDURE analyser_phrase(phrase : STRING)
+VAR
+    longueur, nombre_mots, nombre_voyelles : INTEGER ;
+    i : INTEGER ;
+    voyelles : STRING := "aeiouAEIOU" ; // Liste des voyelles
+BEGIN
+    // Initialiser les compteurs
+    longueur := 0 ;
+    nombre_mots := 0 ;
+    nombre_voyelles := 0 ;
+
+    // Compter la longueur de la phrase
+    longueur := LENGTH(phrase) ;
+
+    // Compter le nombre de mots
+    // Si la phrase n'est pas vide, incrémenter le compteur de mots
+    IF longueur > 0 THEN
+        nombre_mots := 1 ; // Le premier mot commence
+        FOR i FROM 1 TO longueur - 1 DO
+            IF (phrase[i] = ' ') THEN
+                nombre_mots := nombre_mots + 1 ; // Incrémenter le compteur de mots pour chaque espace
+            END_IF
+        END_FOR
+    END_IF
+
+    // Compter le nombre de voyelles
+    FOR i FROM 0 TO longueur - 1 DO
+        IF (voyelles CONTAINS phrase[i]) THEN
+            nombre_voyelles := nombre_voyelles + 1 ; // Incrémenter le compteur de voyelles
+        END_IF
+    END_FOR
+
+    // Afficher les résultats
+    WRITE("Longueur de la phrase : ", longueur) ;
+    WRITE("Nombre de mots : ", nombre_mots) ;
+    WRITE("Nombre de voyelles : ", nombre_voyelles) ;
+END
