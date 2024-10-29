@@ -1,0 +1,21 @@
+function insertionSort(arr) {
+    // Parcourir chaque élément du tableau à partir du deuxième élément
+    for (let i = 1; i < arr.length; i++) {
+        // L'élément à insérer
+        let currentElement = arr[i];
+        // Index pour la position d'insertion
+        let j = i - 1;
+
+        // Déplacer les éléments du tableau qui sont plus grands que currentElement
+        // d'une position vers la droite
+        while (j >= 0 && arr[j] > currentElement) {
+            arr[j + 1] = arr[j]; // Déplacer l'élément vers la droite
+            j--; // Décrementer l'index
+        }
+
+        // Insérer l'élément actuel à sa position correcte
+        arr[j + 1] = currentElement;
+    }
+
+    return arr; // Retourner le tableau trié
+}
